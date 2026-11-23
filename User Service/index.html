@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07110f">
+  <title>USER SERVICE | Raj Travel Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --accent: #b8ff5c; --ink:#f7f8f4; --muted:rgba(247,248,244,.72); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { min-height:100vh; color:var(--ink); background:#07110f; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; z-index:-3; background:
+      linear-gradient(90deg,rgba(4,12,12,.88) 0%,rgba(4,12,12,.57) 48%,rgba(4,12,12,.13) 100%),
+      linear-gradient(0deg,#07110f 0%,transparent 48%,rgba(4,12,12,.25) 100%),
+      url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90") center/cover no-repeat; transform:scale(1.04); animation:slowzoom 22s ease-in-out infinite alternate; }
+    body::after { content:""; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.13; background-image:radial-gradient(rgba(255,255,255,.7) .6px,transparent .6px); background-size:5px 5px; }
+    @keyframes slowzoom { to { transform:scale(1.12); } }
+    @keyframes rise { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes pulse { 50% { box-shadow:0 0 0 10px color-mix(in srgb,var(--accent) 0%,transparent); } }
+    .wrap { width:min(1180px,calc(100% - 48px)); margin:auto; }
+    header { height:88px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.18); }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:white; font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:.04em; }
+    .brand-mark { width:38px; height:38px; display:grid; place-items:center; color:#08110e; background:var(--accent); border-radius:13px 13px 13px 4px; font-size:19px; box-shadow:0 0 28px color-mix(in srgb,var(--accent) 40%,transparent); }
+    nav { display:flex; gap:28px; align-items:center; }
+    nav a { color:rgba(255,255,255,.78); text-decoration:none; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; transition:.25s; }
+    nav a:hover { color:var(--accent); }
+    .service-pill { border:1px solid rgba(255,255,255,.32); padding:10px 15px; border-radius:30px; color:white; font-size:11px; letter-spacing:.12em; }
+    main { min-height:calc(100vh - 160px); display:flex; align-items:center; padding:72px 0 58px; }
+    .hero { max-width:790px; animation:rise .9s both; }
+    .eyebrow { display:flex; align-items:center; gap:12px; color:var(--accent); font-size:11px; letter-spacing:.27em; font-weight:800; text-transform:uppercase; margin-bottom:25px; }
+    .eyebrow::before { content:""; width:35px; height:1px; background:var(--accent); }
+    h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(48px,7.3vw,96px); line-height:.99; letter-spacing:-.075em; font-weight:700; text-wrap:balance; }
+    h1 em { color:var(--accent); font-style:normal; }
+    .desc { max-width:530px; margin:28px 0 30px; color:var(--muted); font-size:16px; line-height:1.8; }
+    .actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .cta { display:inline-flex; align-items:center; gap:22px; padding:16px 21px; border-radius:5px; background:var(--accent); color:#07110f; font-weight:800; text-decoration:none; font-size:13px; transition:transform .25s,box-shadow .25s; box-shadow:0 10px 35px color-mix(in srgb,var(--accent) 20%,transparent); }
+    .cta:hover { transform:translateY(-4px); box-shadow:0 16px 40px color-mix(in srgb,var(--accent) 35%,transparent); }
+    .cta span { font-size:20px; line-height:12px; }
+    .micro { color:rgba(255,255,255,.7); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+    .watermark { position:absolute; right:-2vw; top:34%; writing-mode:vertical-rl; font-family:'Space Grotesk',sans-serif; font-size:clamp(60px,10vw,145px); font-weight:700; letter-spacing:-.08em; color:rgba(255,255,255,.075); pointer-events:none; }
+    .bottom { display:grid; grid-template-columns:1.2fr 2fr; gap:50px; padding:26px 0 34px; border-top:1px solid rgba(255,255,255,.2); }
+    .tag { color:var(--accent); font-size:10px; letter-spacing:.22em; font-weight:800; margin-bottom:10px; }
+    .owner { color:rgba(255,255,255,.78); font-size:13px; }
+    .owner strong { color:white; font-family:'Space Grotesk',sans-serif; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .stat strong { display:block; font-family:'Space Grotesk',sans-serif; font-size:19px; color:white; margin-bottom:5px; }
+    .stat span { color:rgba(255,255,255,.58); font-size:11px; }
+    .features { padding:72px 0 85px; background:rgba(5,14,13,.92); border-top:1px solid rgba(255,255,255,.1); }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:28px; }
+    .section-head h2 { font:700 clamp(30px,4vw,48px)/1 'Space Grotesk',sans-serif; letter-spacing:-.06em; }
+    .section-head p { color:var(--muted); font-size:12px; max-width:260px; line-height:1.6; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .card { padding:25px; min-height:155px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.045); transition:.25s; }
+    .card:hover { transform:translateY(-6px); border-color:var(--accent); background:rgba(255,255,255,.08); }
+    .num { color:var(--accent); font:700 12px 'Space Grotesk',sans-serif; margin-bottom:22px; }
+    .card h3 { font:600 19px 'Space Grotesk',sans-serif; margin-bottom:8px; }
+    .card p { color:rgba(255,255,255,.62); font-size:12px; line-height:1.65; }
+    footer { padding:20px 24px; text-align:center; background:#050c0b; color:rgba(255,255,255,.45); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    footer b { color:var(--accent); }
+    @media(max-width:700px) {
+      .wrap { width:min(100% - 34px,1180px); } header { height:72px; } nav { gap:13px; } nav a { font-size:9px; } nav a:nth-child(2),nav a:nth-child(3) { display:none; }
+      .service-pill { padding:8px 10px; font-size:9px; } main { min-height:650px; padding:75px 0 50px; } .desc { font-size:14px; }
+      .bottom { grid-template-columns:1fr; gap:22px; } .cards { grid-template-columns:1fr; } .watermark { top:46%; right:0; font-size:62px; }
+      .features { padding:55px 0; } .section-head { align-items:start; flex-direction:column; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#"><span class="brand-mark">R</span><span>RAJ<span style="color:var(--accent)">.</span>TRAVEL</span></a>
+      <nav aria-label="Main navigation"><a href="#features">Features</a><a href="#about">About</a><a href="#owner">Owner</a></nav>
+      <span class="service-pill">01 / THE TRAVELLER</span>
+    </header>
+    <main>
+      <div class="hero">
+        <div class="eyebrow">YOUR JOURNEY, YOUR IDENTITY</div>
+        <h1>Every great escape<br><em>starts with you.</em></h1>
+        <p class="desc">A personal travel hub for profiles, preferences, saved places and every little detail that makes a trip yours.</p>
+        <div class="actions"><a class="cta" href="#features">Explore your profile <span>↗</span></a><span class="micro">Travel management / Microservice</span></div>
+      </div>
+      <div class="watermark">BELONG</div>
+    </main>
+    <section class="bottom" id="owner">
+      <div><div class="tag">01 / THE TRAVELLER</div><p class="owner">Designed & owned by <strong>Raj</strong> · Travel Management System</p></div>
+      <div class="stats"><div class="stat"><strong>01</strong><span>One traveller</span></div><div class="stat"><strong>∞</strong><span>Places to dream</span></div><div class="stat"><strong>24/7</strong><span>Your travel profile</span></div></div>
+    </section>
+  </div>
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="section-head"><h2>Built for the<br><span style="color:var(--accent)">journey.</span></h2><p>One focused service. A smoother travel experience. Let the adventure begin.</p></div>
+      <div class="cards"><article class="card"><div class="num">✳ &nbsp; 01</div><h3>Personal profile</h3><p>Keep your traveller details in one place.</p></article><article class="card"><div class="num">✳ &nbsp; 02</div><h3>Travel preferences</h3><p>Save the way you love to explore.</p></article><article class="card"><div class="num">✳ &nbsp; 03</div><h3>Saved adventures</h3><p>Keep dream destinations close.</p></article></div>
+    </div>
+  </section>
+  <footer>© 2026 RAJ TRAVEL MANAGEMENT · CRAFTED WITH <b>♥ BY RAJ</b></footer>
+</body>
+</html>
