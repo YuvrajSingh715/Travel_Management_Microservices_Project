@@ -1,0 +1,259 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071310"><title>BOOKING SERVICE | Raj Travel</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#071310;--panel:#10211d;--panel2:#142923;--ink:#f4f8f4;--muted:#aabbb2;--line:#ffffff20;--accent:#ffb45e;--glow:#baff5c22}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}a{color:inherit;text-decoration:none}button,input,select{font:inherit}
+.shell{width:min(1260px,calc(100% - 42px));margin:auto}
+header{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font:700 17px 'Space Grotesk';letter-spacing:.04em;white-space:nowrap}.brand-mark{width:38px;height:38px;display:grid;place-items:center;background:var(--accent);color:#081311;border-radius:13px 13px 13px 4px;font-size:20px}
+nav{display:flex;gap:23px;color:#c5d0ca;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}nav a:hover{color:var(--accent)}
+.pill{border:1px solid var(--line);border-radius:30px;padding:9px 13px;font-size:9px;letter-spacing:.12em;color:#d7e0da;white-space:nowrap}
+.hero{position:relative;min-height:480px;display:flex;align-items:center;padding:70px 0;isolation:isolate}.hero:before{content:"";position:absolute;inset:0 -30vw;z-index:-2;background:linear-gradient(90deg,rgba(4,13,11,.96),rgba(4,13,11,.68) 52%,rgba(4,13,11,.12)),var(--hero) center/cover}.hero:after{content:"";position:absolute;inset:0 -30vw;z-index:-1;background:linear-gradient(0deg,var(--bg),transparent 40%)}
+.hero-copy{max-width:760px;animation:rise .8s both}.eyebrow{color:var(--accent);font-size:10px;letter-spacing:.26em;font-weight:800;text-transform:uppercase;margin-bottom:20px}.eyebrow:before{content:"";display:inline-block;width:28px;height:1px;background:currentColor;vertical-align:middle;margin-right:12px}
+h1{font:700 clamp(46px,7vw,84px)/.98 'Space Grotesk';letter-spacing:-.075em}h1 em{font-style:normal;color:var(--accent)}.lead{max-width:620px;color:#c1cec6;line-height:1.8;font-size:15px;margin:23px 0 26px}
+.actions{display:flex;gap:11px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:13px 18px;background:var(--accent);color:#071310;border:0;border-radius:7px;font-weight:800;font-size:12px;cursor:pointer;transition:.22s}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px var(--glow)}.btn.ghost{background:#ffffff10;color:white;border:1px solid var(--line)}
+.section{padding:48px 0 72px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.section-head h2{font:700 clamp(29px,4vw,45px)/1 'Space Grotesk';letter-spacing:-.06em}.section-head p{max-width:350px;color:var(--muted);font-size:12px;line-height:1.7}
+.search-row{display:flex;gap:10px;max-width:600px;margin-bottom:16px}.search-row input{width:100%;background:#ffffff0c;border:1px solid var(--line);border-radius:8px;padding:13px 15px;color:white;outline:none}.search-row input:focus{border-color:var(--accent)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid var(--line);background:#ffffff09;color:#dce5df;padding:8px 13px;border-radius:30px;cursor:pointer;font-size:10px}.filter.active,.filter:hover{background:var(--accent);border-color:var(--accent);color:#071310;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tile{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:.23s;cursor:pointer}.tile:hover{transform:translateY(-5px);border-color:#ffffff55;box-shadow:0 18px 45px #0004}.tile img{width:100%;height:190px;object-fit:cover;display:block}.tile-body{padding:16px}.tile-top{display:flex;justify-content:space-between;gap:10px;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.tile h3{font:600 20px 'Space Grotesk';margin:9px 0 6px}.tile p{color:var(--muted);font-size:11px;line-height:1.65;min-height:38px}.meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:#dbe5df;font-size:10px}.heart{border:1px solid var(--line);background:#ffffff0b;color:white;border-radius:50%;width:33px;height:33px;cursor:pointer;font-size:16px}.heart.active{color:#ff83b0;border-color:#ff83b0}
+.empty{display:none;color:var(--muted);padding:30px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.stat strong{font:700 20px 'Space Grotesk';display:block}.stat span{font-size:10px;color:var(--muted)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:22px;margin:22px 0}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.field label{display:block;color:#c9d5ce;font-size:11px;margin-bottom:7px}.field input,.field select{width:100%;background:#071511;color:white;border:1px solid #ffffff2b;border-radius:7px;padding:12px;outline:none}.field input:focus,.field select:focus{border-color:var(--accent)}
+.detail-backdrop,.success-backdrop{position:fixed;inset:0;background:#000c;backdrop-filter:blur(9px);z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.detail-backdrop.open,.success-backdrop.open{display:flex}.detail-modal{width:min(920px,100%);max-height:92vh;overflow:auto;background:#10211d;border:1px solid #ffffff28;border-radius:17px;box-shadow:0 25px 100px #000b;position:relative}.detail-cover{height:275px;position:relative}.detail-cover img{width:100%;height:100%;object-fit:cover}.detail-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#10211d,transparent 65%)}.close{position:absolute;right:14px;top:14px;z-index:3;width:39px;height:39px;border-radius:50%;border:1px solid #ffffff70;background:#081311dd;color:white;font-size:23px;cursor:pointer}
+.detail-content{padding:0 25px 25px;margin-top:-30px;position:relative}.detail-kicker{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.detail-content h2{font:700 clamp(28px,5vw,44px) 'Space Grotesk';margin:7px 0}.detail-content p{color:#bdcbc3;line-height:1.7;font-size:13px}.detail-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:17px 0}.fact{padding:12px;background:#ffffff0b;border:1px solid #ffffff16;border-radius:9px}.fact b{display:block;font-size:11px;margin-bottom:5px}.fact span{color:#aebdb5;font-size:11px}.detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px}.detail-columns h3{font:600 17px 'Space Grotesk';margin-bottom:8px}.detail-columns ul{padding-left:18px;color:#bdcbc3;font-size:12px;line-height:1.9}.detail-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.ticket{width:min(520px,100%);background:#f8fff9;color:#10221c;border-radius:18px;overflow:hidden;box-shadow:0 30px 100px #0009;animation:ticketIn .65s cubic-bezier(.2,.9,.2,1) both}.ticket-top{background:var(--accent);padding:25px;text-align:center}.ticket-top .check{width:62px;height:62px;margin:0 auto 10px;border-radius:50%;background:#092018;color:var(--accent);display:grid;place-items:center;font-size:32px;animation:pop .5s .25s both}.ticket-top h2{font:700 26px 'Space Grotesk'}.ticket-body{padding:22px}.ticket-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed #b7c7bd;font-size:12px}.ticket-row b{text-align:right}.ticket-code{text-align:center;font:700 17px 'Space Grotesk';letter-spacing:.15em;padding:17px 0 5px}.ticket-actions{display:flex;gap:10px;justify-content:center;padding:0 20px 22px}.ticket-actions button{min-width:120px}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes ticketIn{from{opacity:0;transform:translateY(45px) scale(.92)}to{opacity:1;transform:none}}@keyframes pop{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}@keyframes shine{to{background-position:200% center}}
+footer{padding:22px;text-align:center;color:#82918a;font-size:10px;letter-spacing:.13em;border-top:1px solid var(--line)}footer b{color:var(--accent)}
+@media(max-width:760px){.shell{width:calc(100% - 28px)}header{height:70px}nav{gap:10px}nav a{font-size:8px}nav a:nth-child(2){display:none}.pill{font-size:8px;padding:7px}.hero{min-height:440px;padding:55px 0}.lead{font-size:13px}.grid{grid-template-columns:1fr}.tile img{height:220px}.section-head{align-items:start;flex-direction:column}.stats{gap:8px}.stat strong{font-size:16px}.form-grid{grid-template-columns:1fr}.detail-cover{height:205px}.detail-content{padding:0 16px 18px}.detail-facts{grid-template-columns:1fr}.detail-columns{grid-template-columns:1fr;gap:13px}}
+@media(min-width:761px) and (max-width:1020px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><div class="shell"><header><a class="brand" href="../destination-service/index.html"><span class="brand-mark">R</span><span>RAJ<span style="color:var(--accent)">.</span>TRAVEL</span></a><nav><a href="../user-service/index.html">Profile</a><a href="../destination-service/index.html">Destinations</a><a href="../payment-service/index.html">Payment</a></nav><span class="pill">03 / THE GETAWAY</span></header><section class="hero" style="--hero:url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=2200&q=90')"><div class="hero-copy"><div class="eyebrow">FROM DREAM TO DEPARTURE</div><h1>Choose the place.<br><em>We'll plan the story.</em></h1><p class="lead">Select one of 26 famous destinations, choose your travel dates and guest count, then confirm your demo booking to receive an animated ticket.</p><div class="actions"><a class="btn" href="#explore">Explore destinations ↗</a><a class="btn ghost" href="../booking-service/index.html">Plan a trip</a></div></div></section>
+<section class="section" id="explore"><div class="shell">
+<div class="section-head"><div><div class="eyebrow">CURATED TRAVEL COLLECTION</div><h2 id="sectionTitle">Choose your destination</h2></div><p>Open a place for details, then plan your trip. Booking confirmation is demonstrated locally; no real reservation is made.</p></div>
+
+<div class="panel"><div class="section-head" style="margin-bottom:14px"><div><h2 style="font-size:23px">Your trip details</h2><p style="margin-top:8px">Choose a destination card below or enter your trip details here.</p></div></div>
+<form id="bookingForm"><div class="form-grid">
+<div class="field"><label for="bookingDestination">Destination</label><select id="bookingDestination" required></select></div>
+<div class="field"><label for="guestCount">Guests</label><select id="guestCount"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div>
+<div class="field"><label for="startDate">Departure date</label><input id="startDate" type="date" required></div>
+<div class="field"><label for="endDate">Return date</label><input id="endDate" type="date" required></div>
+</div><button class="btn" type="submit" style="margin-top:16px">Confirm demo booking ↗</button><p style="font-size:10px;color:var(--muted);margin-top:10px">Demo booking only. This does not reserve a real hotel, flight or tour.</p></form></div>
+<div class="search-row"><input id="searchInput" type="search" placeholder="Search destination, country or landmark..." aria-label="Search destinations"></div>
+<div class="filters">
+<button class="filter active" data-filter="all">All places</button>
+<button class="filter" data-filter="wonder">Seven Wonders</button>
+<button class="filter" data-filter="city">Cities</button>
+<button class="filter" data-filter="nature">Nature</button>
+<button class="filter" data-filter="beach">Beaches</button>
+<button class="filter" data-filter="culture">Culture</button>
+<button class="filter" data-filter="india">India</button>
+</div>
+<div class="grid" id="destinationGrid"></div><div class="empty" id="emptyState">No destinations match. Try another search or category.</div>
+<p class="note" style="color:var(--muted);font-size:10px;margin-top:15px">Destination information and budgets are illustrative planning guidance. Verify current entry rules, local conditions and prices before travel.</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="stats"><div class="stat"><strong>26 PLACES</strong><span>Famous destinations to explore</span></div><div class="stat"><strong>7 WONDERS</strong><span>New Seven Wonders collection</span></div><div class="stat"><strong>4 SERVICES</strong><span>One connected travel experience</span></div></div></section></div><footer>© 2026 RAJ TRAVEL MANAGEMENT · CRAFTED WITH <b>♥ BY RAJ</b> · DEMO EXPERIENCE</footer>
+<div class="detail-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="detail-modal">
+<button class="close" id="detailClose" aria-label="Close">×</button><div class="detail-cover"><img id="detailImage" src="" alt=""></div>
+<div class="detail-content"><div class="detail-kicker" id="detailCountry"></div><h2 id="detailTitle"></h2><p id="detailDescription"></p>
+<div class="detail-facts"><div class="fact"><b>☀ Best time to visit</b><span id="detailSeason"></span></div><div class="fact"><b>◷ Suggested duration</b><span id="detailDuration"></span></div><div class="fact"><b>₹ Estimated budget</b><span id="detailBudget"></span></div></div>
+<div class="detail-columns"><div><h3>Top attractions</h3><ul id="detailAttractions"></ul></div><div><h3>Helpful travel tips</h3><ul id="detailTips"></ul></div></div>
+<div class="detail-actions"><a class="btn" id="detailBook" href="../booking-service/index.html">Plan this trip ↗</a><button class="btn ghost" id="detailSave">♡ Save to wishlist</button></div></div></div></div>
+<div class="success-backdrop" id="successBackdrop" role="dialog" aria-modal="true"><div class="ticket">
+<div class="ticket-top"><div class="check">✓</div><h2 id="ticketTitle">Your ticket is booked!</h2><p style="font-size:11px;margin-top:5px">Raj Travel Management · Demo confirmation</p></div>
+<div class="ticket-body" id="ticketRows"></div><div class="ticket-code" id="ticketCode"></div>
+<div class="ticket-actions"><button class="btn ghost" id="ticketClose" style="background:#e8efea;color:#14251e;border-color:#d5e1d8">Close</button><button class="btn" id="ticketPrint">Print ticket</button></div>
+</div></div>
+
+<script>
+const DESTINATIONS=[{"id": "taj-mahal", "name": "Taj Mahal", "place": "Agra, India", "flag": "🇮🇳", "category": "wonder", "tag": "New7Wonders", "description": "A white-marble masterpiece built by Mughal emperor Shah Jahan, admired for its symmetry, gardens and changing colours at sunrise.", "season": "October–March", "duration": "1–2 days", "attractions": ["Taj Mahal", "Agra Fort", "Mehtab Bagh", "Fatehpur Sikri"], "tips": ["Arrive early for softer light", "Check monument opening days", "Use official ticket counters or portals"], "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=85", "budgetINR": 12000}, {"id": "great-wall", "name": "Great Wall of China", "place": "Beijing region, China", "flag": "🇨🇳", "category": "wonder", "tag": "New7Wonders", "description": "A vast network of historic fortifications winding across mountains and landscapes in northern China.", "season": "April–May; September–October", "duration": "2–3 days", "attractions": ["Mutianyu section", "Badaling section", "Juyongguan Pass", "Beijing old town"], "tips": ["Wear comfortable shoes", "Choose a section based on fitness", "Check weather and cable-car operations"], "image": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=85", "budgetINR": 95000}, {"id": "petra", "name": "Petra", "place": "Ma'an, Jordan", "flag": "🇯🇴", "category": "wonder", "tag": "New7Wonders", "description": "An ancient Nabataean city carved into rose-coloured sandstone cliffs, entered through the dramatic Siq.", "season": "March–May; September–November", "duration": "2 days", "attractions": ["The Treasury", "The Monastery", "The Siq", "Royal Tombs"], "tips": ["Start early to avoid midday heat", "Carry water and sun protection", "Wear sturdy walking shoes"], "image": "https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?auto=format&fit=crop&w=1200&q=85", "budgetINR": 135000}, {"id": "colosseum", "name": "Colosseum", "place": "Rome, Italy", "flag": "🇮🇹", "category": "wonder", "tag": "New7Wonders", "description": "The iconic Roman amphitheatre, once the stage for public spectacles and a lasting symbol of ancient Rome.", "season": "April–June; September–October", "duration": "2–3 days", "attractions": ["Colosseum", "Roman Forum", "Palatine Hill", "Trevi Fountain"], "tips": ["Book timed entry ahead", "Consider a combined archaeological ticket", "Expect security checks"], "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=85", "budgetINR": 145000}, {"id": "chichen-itza", "name": "Chichén Itzá", "place": "Yucatán, Mexico", "flag": "🇲🇽", "category": "wonder", "tag": "New7Wonders", "description": "A major Maya archaeological site famous for the stepped pyramid of El Castillo and its remarkable astronomical design.", "season": "November–April", "duration": "1 day", "attractions": ["El Castillo pyramid", "Great Ball Court", "Temple of the Warriors", "Cenote Ik Kil nearby"], "tips": ["Bring water and sun protection", "Arrive near opening time", "Use a licensed guide for historical context"], "image": "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1200&q=85", "budgetINR": 175000}, {"id": "machu-picchu", "name": "Machu Picchu", "place": "Cusco Region, Peru", "flag": "🇵🇪", "category": "wonder", "tag": "New7Wonders", "description": "A spectacular Inca citadel set high in the Andes, known for stone architecture and sweeping mountain scenery.", "season": "May–September", "duration": "2–3 days", "attractions": ["Machu Picchu citadel", "Sun Gate", "Inca Bridge", "Aguas Calientes"], "tips": ["Reserve entry and train tickets early", "Allow time to acclimatise in Cusco", "Follow your assigned circuit"], "image": "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=85", "budgetINR": 210000}, {"id": "christ-redeemer", "name": "Christ the Redeemer", "place": "Rio de Janeiro, Brazil", "flag": "🇧🇷", "category": "wonder", "tag": "New7Wonders", "description": "The monumental Art Deco statue overlooking Rio de Janeiro from Corcovado Mountain, with sweeping city and bay views.", "season": "May–October", "duration": "2–3 days", "attractions": ["Christ the Redeemer", "Sugarloaf Mountain", "Copacabana Beach", "Selarón Steps"], "tips": ["Book official transport tickets", "Check cloud and visibility forecasts", "Keep valuables secure in busy areas"], "image": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=85", "budgetINR": 195000}, {"id": "eiffel-tower", "name": "Eiffel Tower", "place": "Paris, France", "flag": "🇫🇷", "category": "city", "tag": "Iconic landmark", "description": "Paris's iron lattice tower is one of the world's best-known landmarks, especially beautiful when illuminated after dusk.", "season": "April–June; September–October", "duration": "3–4 days", "attractions": ["Eiffel Tower", "Louvre Museum", "Montmartre", "Seine river cruise"], "tips": ["Reserve tower tickets in advance", "Use the Metro for easy travel", "Watch belongings in crowded areas"], "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85", "budgetINR": 165000}, {"id": "burj-khalifa", "name": "Burj Khalifa", "place": "Dubai, UAE", "flag": "🇦🇪", "category": "city", "tag": "Iconic landmark", "description": "The world's tallest building rises above Downtown Dubai, with observation decks and sweeping views across the city.", "season": "November–March", "duration": "3–4 days", "attractions": ["At the Top observation decks", "Dubai Fountain", "Dubai Mall", "Desert safari"], "tips": ["Choose an observation slot ahead", "Evenings are popular", "Check desert activity pickup details"], "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85", "budgetINR": 78000}, {"id": "singapore", "name": "Marina Bay", "place": "Singapore", "flag": "🇸🇬", "category": "city", "tag": "City escape", "description": "A futuristic waterfront district with striking architecture, gardens, shopping and a lively skyline after dark.", "season": "February–April", "duration": "3–4 days", "attractions": ["Gardens by the Bay", "Marina Bay Sands waterfront", "Merlion Park", "Sentosa Island"], "tips": ["Use the MRT", "Carry a light rain layer", "Reserve popular attractions"], "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=85", "budgetINR": 65000}, {"id": "bali", "name": "Bali", "place": "Indonesia", "flag": "🇮🇩", "category": "beach", "tag": "Island escape", "description": "A tropical island known for beaches, temples, rice terraces, waterfalls and relaxed resort stays.", "season": "April–October", "duration": "5–7 days", "attractions": ["Uluwatu Temple", "Ubud rice terraces", "Nusa Penida", "Seminyak beaches"], "tips": ["Plan transfers between regions", "Respect temple dress rules", "Check entry requirements"], "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85", "budgetINR": 85000}, {"id": "maldives", "name": "Maldives", "place": "Maldives", "flag": "🇲🇻", "category": "beach", "tag": "Island escape", "description": "Turquoise lagoons, coral reefs and island stays make this an ideal ocean-focused getaway.", "season": "November–April", "duration": "4–5 days", "attractions": ["Snorkelling reefs", "Sandbank excursions", "Local island visits", "Lagoon cruises"], "tips": ["Check boat or seaplane transfers", "Compare resort and local-island stays", "Follow reef-safe practices"], "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=85", "budgetINR": 125000}, {"id": "goa", "name": "Goa", "place": "India", "flag": "🇮🇳", "category": "beach", "tag": "Coastal escape", "description": "A relaxed coastal destination with sandy beaches, heritage streets, markets and a lively food scene.", "season": "November–February", "duration": "3–5 days", "attractions": ["Palolem Beach", "Fontainhas", "Fort Aguada", "Anjuna markets"], "tips": ["Choose a base to match your vibe", "Use licensed transport", "Follow beach safety flags"], "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=85", "budgetINR": 18000}, {"id": "kerala", "name": "Kerala backwaters", "place": "Alleppey, India", "flag": "🇮🇳", "category": "nature", "tag": "Nature escape", "description": "A peaceful network of palm-lined waterways, village life and houseboat journeys through Kerala's backwaters.", "season": "September–March", "duration": "2–3 days", "attractions": ["Alleppey backwaters", "Kumarakom", "Fort Kochi", "Local village experiences"], "tips": ["Book houseboats with trusted operators", "Carry light rain protection", "Confirm inclusions before booking"], "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=85", "budgetINR": 22000}, {"id": "manali", "name": "Manali", "place": "Himachal Pradesh, India", "flag": "🇮🇳", "category": "nature", "tag": "Mountain escape", "description": "A Himalayan getaway known for pine forests, mountain views, riverside cafés and adventure access.", "season": "March–June; December–February for snow", "duration": "4–5 days", "attractions": ["Solang Valley", "Old Manali", "Hadimba Temple", "Atal Tunnel viewpoints"], "tips": ["Check road and weather updates", "Pack warm layers", "Acclimatise before high-altitude activities"], "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=85", "budgetINR": 19000}, {"id": "ladakh", "name": "Ladakh", "place": "India", "flag": "🇮🇳", "category": "nature", "tag": "Mountain escape", "description": "A high-altitude landscape of dramatic mountains, monasteries, clear lakes and unforgettable road journeys.", "season": "June–September", "duration": "6–8 days", "attractions": ["Pangong Lake", "Nubra Valley", "Thiksey Monastery", "Khardung La region"], "tips": ["Allow time to acclimatise", "Avoid strenuous activity on arrival", "Check permits and road status"], "image": "https://images.unsplash.com/photo-1566837497312-7be4a2f7b2c6?auto=format&fit=crop&w=1200&q=85", "budgetINR": 42000}, {"id": "kashmir", "name": "Kashmir Valley", "place": "India", "flag": "🇮🇳", "category": "nature", "tag": "Nature escape", "description": "Alpine scenery, lakes, gardens and mountain towns create a memorable nature-focused journey.", "season": "April–October; winter for snow", "duration": "5–7 days", "attractions": ["Dal Lake", "Gulmarg", "Pahalgam", "Mughal Gardens"], "tips": ["Check current local advisories", "Keep plans flexible for weather", "Confirm local transport rates"], "image": "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=85", "budgetINR": 32000}, {"id": "jaipur", "name": "Jaipur", "place": "Rajasthan, India", "flag": "🇮🇳", "category": "culture", "tag": "Heritage escape", "description": "The Pink City pairs grand forts and palaces with colourful bazaars, traditional crafts and Rajasthani cuisine.", "season": "October–March", "duration": "2–3 days", "attractions": ["Hawa Mahal", "Amber Fort", "City Palace", "Jantar Mantar"], "tips": ["Start fort visits early", "Bargain politely in markets", "Try regional food"], "image": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1200&q=85", "budgetINR": 15000}, {"id": "udaipur", "name": "Udaipur", "place": "Rajasthan, India", "flag": "🇮🇳", "category": "culture", "tag": "Heritage escape", "description": "A graceful city of lakes, palaces, rooftop views and old lanes set among the Aravalli hills.", "season": "October–March", "duration": "2–3 days", "attractions": ["City Palace", "Lake Pichola", "Jag Mandir", "Saheliyon Ki Bari"], "tips": ["Take a sunset lake boat ride", "Explore the old city on foot", "Reserve lake-view stays early"], "image": "https://images.unsplash.com/photo-1606293926075-69a00dbdde81?auto=format&fit=crop&w=1200&q=85", "budgetINR": 17000}, {"id": "agra-fort", "name": "Agra Fort", "place": "Agra, India", "flag": "🇮🇳", "category": "culture", "tag": "Heritage escape", "description": "A UNESCO-listed red sandstone fortress that reveals the power and architecture of the Mughal era.", "season": "October–March", "duration": "Half day", "attractions": ["Agra Fort", "Taj Mahal", "Mehtab Bagh", "Fatehpur Sikri"], "tips": ["Combine with a Taj Mahal visit", "Wear comfortable walking shoes", "Check ticket combinations"], "image": "https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?auto=format&fit=crop&w=1200&q=85", "budgetINR": 9000}, {"id": "tokyo", "name": "Tokyo", "place": "Japan", "flag": "🇯🇵", "category": "city", "tag": "City escape", "description": "A dynamic mix of neon districts, tranquil shrines, food alleys and cutting-edge design.", "season": "March–May; October–November", "duration": "5–7 days", "attractions": ["Shibuya Crossing", "Senso-ji Temple", "Shinjuku", "Meiji Jingu"], "tips": ["Learn a few useful local phrases", "Compare rail pass options", "Carry cash for smaller shops"], "image": "https://images.unsplash.com/photo-1540959733332-eab4deabbaea?auto=format&fit=crop&w=1200&q=85", "budgetINR": 145000}, {"id": "london", "name": "London", "place": "United Kingdom", "flag": "🇬🇧", "category": "city", "tag": "City escape", "description": "A lively mix of royal landmarks, historic neighbourhoods, museums, theatre and global food.", "season": "May–September", "duration": "4–6 days", "attractions": ["Tower Bridge", "British Museum", "Westminster", "Covent Garden"], "tips": ["Use contactless transit payment", "Carry a light rain jacket", "Check attraction opening days"], "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=85", "budgetINR": 155000}, {"id": "new-york", "name": "New York City", "place": "USA", "flag": "🇺🇸", "category": "city", "tag": "City escape", "description": "An energetic metropolis known for skyline views, museums, neighbourhoods, parks and iconic streets.", "season": "April–June; September–October", "duration": "4–6 days", "attractions": ["Statue of Liberty", "Central Park", "Times Square", "Metropolitan Museum of Art"], "tips": ["Use the subway for longer trips", "Book popular observation decks", "Plan neighbourhoods by day"], "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=85", "budgetINR": 190000}, {"id": "sydney", "name": "Sydney", "place": "Australia", "flag": "🇦🇺", "category": "beach", "tag": "Coastal escape", "description": "A harbour city with coastal walks, iconic architecture, beaches and a relaxed outdoor lifestyle.", "season": "September–November; March–May", "duration": "5–6 days", "attractions": ["Sydney Opera House", "Bondi to Coogee walk", "Harbour Bridge", "Manly Beach"], "tips": ["Use ferries for scenic transport", "Check beach conditions", "Plan for distances between sights"], "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=85", "budgetINR": 180000}, {"id": "cairo", "name": "Giza Pyramids", "place": "Cairo, Egypt", "flag": "🇪🇬", "category": "wonder", "tag": "Ancient wonder", "description": "The monumental pyramids and Great Sphinx at Giza are among the most recognisable surviving ancient sites.", "season": "October–April", "duration": "1–2 days", "attractions": ["Great Pyramid of Giza", "Great Sphinx", "Grand Egyptian Museum", "Saqqara"], "tips": ["Go early to avoid heat", "Use licensed guides", "Agree transport prices in advance"], "image": "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85", "budgetINR": 115000}, {"id": "istanbul", "name": "Istanbul", "place": "Türkiye", "flag": "🇹🇷", "category": "culture", "tag": "Culture escape", "description": "A layered city connecting Europe and Asia through historic architecture, bazaars, waterfronts and food.", "season": "April–May; September–November", "duration": "4–5 days", "attractions": ["Hagia Sophia area", "Blue Mosque", "Grand Bazaar", "Bosphorus cruise"], "tips": ["Dress respectfully at religious sites", "Compare transport card options", "Leave time for neighbourhood walks"], "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=85", "budgetINR": 98000}];
+const SERVICE="booking-service";
+const RATES={INR:1,USD:0.012,EUR:0.011,GBP:0.0094,SGD:0.016,AED:0.044,JPY:1.82};
+const SYMBOLS={INR:"₹",USD:"$",EUR:"€",GBP:"£",SGD:"S$",AED:"د.إ",JPY:"¥"};
+const $=id=>document.getElementById(id);
+function photoSeed(d){
+ let key=SERVICE+"-"+d.id,hash=0;
+ for(let i=0;i<key.length;i++)hash=(hash*31+key.charCodeAt(i))>>>0;
+ return hash||1;
+}
+function photoUrl(d){
+ // Use the curated photograph attached to this exact destination record.
+ return d.image;
+}
+function fallbackPhoto(d){
+ // Never substitute an unrelated random photo: show a destination-labelled fallback instead.
+ const clean=s=>String(s).replace(/[&<>"]/g,"");
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#183d34"/><stop offset="1" stop-color="#071310"/></linearGradient></defs><rect width="1200" height="800" fill="url(#g)"/><circle cx="600" cy="300" r="145" fill="#baff5c" opacity=".12"/><text x="600" y="410" fill="#baff5c" font-size="62" text-anchor="middle" font-family="Arial">${clean(d.name)}</text><text x="600" y="475" fill="#ffffff" font-size="30" text-anchor="middle" font-family="Arial">${clean(d.place)}</text></svg>`;
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+}
+function finalFallback(d){
+ const clean=s=>String(s).replace(/[&<>"]/g,"");
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#173c33"/><stop offset="1" stop-color="#071310"/></linearGradient></defs><rect width="1200" height="800" fill="url(#g)"/><circle cx="600" cy="300" r="115" fill="#baff5c" opacity=".13"/><text x="600" y="410" fill="#baff5c" font-size="62" text-anchor="middle" font-family="Arial">${clean(d.name)}</text><text x="600" y="475" fill="#ffffff" font-size="30" text-anchor="middle" font-family="Arial">${clean(d.place)}</text></svg>`;
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+}
+let activeFilter="all", savedPlaces=new Set();
+try{savedPlaces=new Set(JSON.parse(localStorage.getItem("rajTravelWishlist")||"[]"))}catch(e){}
+function money(inr,currency){let value=inr*RATES[currency];return SYMBOLS[currency]+new Intl.NumberFormat("en-US",{maximumFractionDigits:currency==="JPY"?0:2}).format(value)}
+function filteredPlaces(){
+ const q=($("searchInput").value||"").trim().toLowerCase();
+ return DESTINATIONS.filter(d=>{
+  const cat=activeFilter==="all"||d.category===activeFilter||(activeFilter==="india"&&d.place.toLowerCase().includes("india"));
+  return cat&&[d.name,d.place,d.tag,d.description].join(" ").toLowerCase().includes(q);
+ });
+}
+function renderCards(){
+ const list=filteredPlaces();
+ $("destinationGrid").innerHTML=list.map(d=>`
+ <article class="tile" data-open="${d.id}" tabindex="0" role="button" aria-label="View details for ${d.name}">
+ <img loading="lazy" src="${photoUrl(d)}" alt="${d.name}, ${d.place}" data-destination="${d.id}" onerror="this.onerror=null;this.src='${fallbackPhoto(d)}';">
+ <div class="tile-body"><div class="tile-top"><span>${d.flag} ${d.place}</span><span>${d.tag}</span></div>
+ <h3>${d.name}</h3><p>${d.description}</p><div class="meta"><span>✦ View full destination guide</span>
+ <button class="heart ${savedPlaces.has(d.id)?"active":""}" data-save="${d.id}" aria-label="Save ${d.name}">${savedPlaces.has(d.id)?"♥":"♡"}</button></div></div></article>`).join("");
+ $("emptyState").style.display=list.length?"none":"block";
+}
+function savePlace(id){savedPlaces.has(id)?savedPlaces.delete(id):savedPlaces.add(id);localStorage.setItem("rajTravelWishlist",JSON.stringify([...savedPlaces]));renderCards()}
+function openDetails(id){
+ const d=DESTINATIONS.find(x=>x.id===id);if(!d)return;
+ $("detailImage").dataset.destination=d.id;$("detailImage").dataset.fallbackUsed="";$("detailImage").onerror=null;$("detailImage").src=photoUrl(d);$("detailImage").onerror=()=>{$("detailImage").onerror=null;$("detailImage").src=fallbackPhoto(d);};$("detailImage").alt=d.name;
+ $("detailCountry").textContent=d.flag+" "+d.place+" · "+d.tag;
+ $("detailTitle").textContent=d.name;$("detailDescription").textContent=d.description;
+ $("detailSeason").textContent=d.season;$("detailDuration").textContent=d.duration;
+ $("detailBudget").textContent=money(d.budgetINR,"INR")+" / person (indicative)";
+ $("detailAttractions").innerHTML=d.attractions.map(x=>"<li>"+x+"</li>").join("");
+ $("detailTips").innerHTML=d.tips.map(x=>"<li>"+x+"</li>").join("");
+ $("detailSave").dataset.id=d.id;$("detailSave").textContent=savedPlaces.has(d.id)?"♥ Saved to wishlist":"♡ Save to wishlist";
+ $("detailBook").href="../booking-service/index.html?destination="+encodeURIComponent(d.id);
+ $("detailBackdrop").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeDetails(){$("detailBackdrop").classList.remove("open");document.body.style.overflow=""}
+$("destinationGrid").addEventListener("click",e=>{
+ const save=e.target.closest("[data-save]");if(save){e.stopPropagation();savePlace(save.dataset.save);return}
+ const card=e.target.closest("[data-open]");if(card)openDetails(card.dataset.open);
+});
+$("destinationGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-open]")){e.preventDefault();openDetails(e.target.dataset.open)}});
+$("detailClose").addEventListener("click",closeDetails);
+$("detailBackdrop").addEventListener("click",e=>{if(e.target.id==="detailBackdrop")closeDetails()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDetails()});
+$("detailSave").addEventListener("click",e=>{savePlace(e.currentTarget.dataset.id);e.currentTarget.textContent=savedPlaces.has(e.currentTarget.dataset.id)?"♥ Saved to wishlist":"♡ Save to wishlist"});
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");activeFilter=b.dataset.filter;renderCards()}));
+$("searchInput").addEventListener("input",renderCards);
+function showTicket(title,rows,codeLabel){
+ $("ticketTitle").textContent=title;
+ $("ticketRows").innerHTML=rows.map(r=>`<div class="ticket-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
+ $("ticketCode").textContent=codeLabel;
+ $("successBackdrop").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeTicket(){$("successBackdrop").classList.remove("open");document.body.style.overflow=""}
+$("ticketClose").addEventListener("click",closeTicket);
+$("successBackdrop").addEventListener("click",e=>{if(e.target.id==="successBackdrop")closeTicket()});
+$("ticketPrint").addEventListener("click",()=>window.print());
+function makeCode(prefix){return prefix+"-"+Math.random().toString(36).slice(2,6).toUpperCase()+"-"+Date.now().toString().slice(-5)}
+function populateDestinationSelect(id){
+ const select=$(id);if(!select)return;
+ select.innerHTML=DESTINATIONS.map(d=>`<option value="${d.id}">${d.name} — ${d.place}</option>`).join("");
+}
+if(SERVICE==="user-service"){
+ $("saveProfile").addEventListener("click",()=>{localStorage.setItem("rajTravelProfile",JSON.stringify({name:$("travellerName").value,style:$("travelStyle").value}));$("profileSaved").textContent="✓ Profile saved in this browser."});
+ try{const p=JSON.parse(localStorage.getItem("rajTravelProfile")||"{}");$("travellerName").value=p.name||"";$("travelStyle").value=p.style||"Any kind of adventure"}catch(e){}
+}
+if(SERVICE==="booking-service"){
+ populateDestinationSelect("bookingDestination");
+ const chosen=new URLSearchParams(location.search).get("destination");
+ if(chosen&&DESTINATIONS.some(d=>d.id===chosen))$("bookingDestination").value=chosen;
+ const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());$("startDate").min=today.toISOString().slice(0,10);
+ $("startDate").addEventListener("change",()=>{$("endDate").min=$("startDate").value;if($("endDate").value&&$("endDate").value<$("startDate").value)$("endDate").value=$("startDate").value});
+ $("bookingForm").addEventListener("submit",e=>{
+  e.preventDefault();const d=DESTINATIONS.find(x=>x.id===$("bookingDestination").value);
+  if(!$("startDate").value||!$("endDate").value||$("endDate").value<$("startDate").value){alert("Please choose valid departure and return dates.");return}
+  const code=makeCode("RAJ");showTicket("Your ticket is booked!",[["Destination",d.name],["Location",d.place],["Guests",$("guestCount").value],["Departure",$("startDate").value],["Return",$("endDate").value],["Status","DEMO CONFIRMED"]],"BOOKING ID · "+code);
+ });
+}
+if(SERVICE==="payment-service"){
+ populateDestinationSelect("paymentDestination");
+ const updateBudget=()=>{const d=DESTINATIONS.find(x=>x.id===$("paymentDestination").value);const c=$("currencySelect").value;$("budgetDisplay").textContent=money(d.budgetINR,c);$("budgetCaption").textContent="Indicative per-person budget · "+c+" · not a live quote"};
+ $("paymentDestination").addEventListener("change",updateBudget);$("currencySelect").addEventListener("change",updateBudget);updateBudget();
+ $("demoPay").addEventListener("click",()=>{const d=DESTINATIONS.find(x=>x.id===$("paymentDestination").value),c=$("currencySelect").value;showTicket("Demo payment successful!",[["Destination",d.name],["Currency",c],["Sample amount",money(d.budgetINR,c)],["Payment status","DEMO SUCCESS"]],"RECEIPT · "+makeCode("PAY"))});
+}
+renderCards();
+</script>
+
+<div class="detail-backdrop" id="quickBookingBackdrop" role="dialog" aria-modal="true" aria-labelledby="quickBookingTitle">
+ <div class="detail-modal" style="max-width:620px;padding:24px">
+  <button class="close" id="quickBookingClose" aria-label="Close">×</button>
+  <div class="detail-kicker">RAJ TRAVEL · QUICK PLANNER</div>
+  <h2 id="quickBookingTitle" style="font:700 30px 'Space Grotesk';margin:8px 0">Plan your trip</h2>
+  <p style="color:#bdcbc3;font-size:13px;line-height:1.6;margin-bottom:18px">Choose your dates and travellers. We'll create a demo booking ticket right here — no page redirect.</p>
+  <form id="quickBookingForm">
+   <div class="form-grid">
+    <div class="field"><label for="quickDestination">Destination</label><select id="quickDestination" required></select></div>
+    <div class="field"><label for="quickGuests">Guests</label><select id="quickGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div>
+    <div class="field"><label for="quickStart">Departure date</label><input id="quickStart" type="date" required></div>
+    <div class="field"><label for="quickEnd">Return date</label><input id="quickEnd" type="date" required></div>
+   </div>
+   <button class="btn" type="submit" style="margin-top:17px">Confirm demo booking ↗</button>
+   <p style="font-size:10px;color:#aabbb2;margin-top:10px">This creates a sample ticket only. It does not reserve a real trip.</p>
+  </form>
+ </div>
+</div>
+<script>
+(function(){
+ const $q=id=>document.getElementById(id);
+ const backdrop=$q("quickBookingBackdrop");
+ if(!backdrop)return;
+ const select=$q("quickDestination");
+ select.innerHTML=DESTINATIONS.map(d=>`<option value="${d.id}">${d.name} — ${d.place}</option>`).join("");
+ const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+ const todayStr=today.toISOString().slice(0,10);
+ $q("quickStart").min=todayStr;$q("quickEnd").min=todayStr;
+ $q("quickStart").addEventListener("change",()=>{$q("quickEnd").min=$q("quickStart").value;if($q("quickEnd").value&&$q("quickEnd").value<$q("quickStart").value)$q("quickEnd").value=$q("quickStart").value;});
+ function openPlanner(id){
+  if(id&&DESTINATIONS.some(d=>d.id===id))select.value=id;
+  backdrop.classList.add("open");document.body.style.overflow="hidden";
+ }
+ function closePlanner(){backdrop.classList.remove("open");document.body.style.overflow="";}
+ document.querySelectorAll('a[href*="booking-service/index.html"]').forEach(a=>{
+  const label=(a.textContent||"").toLowerCase();
+  if(a.id==="detailBook"||label.includes("plan a trip")||label.includes("plan this trip")){
+   a.addEventListener("click",e=>{
+    e.preventDefault();
+    let id="";
+    try{id=new URL(a.href,location.href).searchParams.get("destination")||"";}catch(_){}
+    if(!id&&a.id==="detailBook"){
+      const detailTitle=document.getElementById("detailTitle");
+      const d=DESTINATIONS.find(x=>x.name===detailTitle?.textContent);
+      if(d)id=d.id;
+    }
+    openPlanner(id);
+   });
+  }
+ });
+ $q("quickBookingClose").addEventListener("click",closePlanner);
+ backdrop.addEventListener("click",e=>{if(e.target===backdrop)closePlanner();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")closePlanner();});
+ $q("quickBookingForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const start=$q("quickStart").value,end=$q("quickEnd").value;
+  if(!start||!end||end<start){alert("Please choose valid departure and return dates.");return;}
+  const d=DESTINATIONS.find(x=>x.id===select.value);
+  const code="RAJ-"+Math.random().toString(36).slice(2,6).toUpperCase()+"-"+Date.now().toString().slice(-5);
+  closePlanner();
+  showTicket("Your ticket is booked!",[["Destination",d.name],["Location",d.place],["Guests",$q("quickGuests").value],["Departure",start],["Return",end],["Status","DEMO CONFIRMED"]],"BOOKING ID · "+code);
+ });
+})();
+</script>
+
+<script>
+/* Keep internal service navigation inside this project when pages are opened as local files or via Live Server. */
+(function(){
+ const serviceNames=["user-service","destination-service","booking-service","payment-service"];
+ const root=new URL("../",window.location.href);
+ document.querySelectorAll("a[href]").forEach(a=>{
+  const raw=a.getAttribute("href")||"";
+  const match=raw.match(/(?:\\.\\.\\/)?(user-service|destination-service|booking-service|payment-service)\\/index\\.html(.*)$/);
+  if(match){
+   const target=new URL(match[1]+"/index.html",root);
+   target.search=match[2]||"";
+   a.href=target.href;
+  }
+ });
+})();
+</script>
+</body></html>
