@@ -32,7 +32,7 @@ footer{padding:22px;text-align:center;color:#82918a;font-size:10px;letter-spacin
 
 <div class="panel"><div class="section-head" style="margin-bottom:14px"><div><h2 style="font-size:23px">Currency converter & demo checkout</h2><p style="margin-top:8px">Select a destination and display currency to view its sample budget.</p></div></div>
 <div class="form-grid"><div class="field"><label for="paymentDestination">Destination</label><select id="paymentDestination"></select></div><div class="field"><label for="currencySelect">Display currency</label><select id="currencySelect"><option value="INR">INR · Indian Rupee (₹)</option><option value="USD">USD · US Dollar ($)</option><option value="EUR">EUR · Euro (€)</option><option value="GBP">GBP · Pound (£)</option><option value="SGD">SGD · Singapore Dollar (S$)</option><option value="AED">AED · UAE Dirham (د.إ)</option><option value="JPY">JPY · Japanese Yen (¥)</option></select></div></div>
-<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;padding:17px;border-radius:10px;background:#ffffff0b"><div><div style="font-size:10px;color:var(--muted)">INDICATIVE TRIP BUDGET</div><strong id="budgetDisplay" style="display:block;font:700 30px 'Space Grotesk';margin-top:4px">₹12,000</strong><small id="budgetCaption" style="color:var(--muted)">Approximate budget per person</small></div><button class="btn" id="demoPay">Try demo checkout ↗</button></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;padding:17px;border-radius:10px;background:#ffffff0b"><div><div style="font-size:10px;color:var(--muted)">INDICATIVE TRIP BUDGET</div><strong id="budgetDisplay" style="display:block;font:700 30px 'Space Grotesk';margin-top:4px">₹12,000</strong><small id="budgetCaption" style="color:var(--muted)">Approximate budget per person</small></div><button class="btn" id="demoPay">Payment checkout ↗</button></div>
 <p style="font-size:10px;color:var(--muted);margin-top:12px">Currency values use fixed illustrative conversion rates for this demo, not live exchange rates. No money is collected.</p></div>
 <div class="search-row"><input id="searchInput" type="search" placeholder="Search destination, country or landmark..." aria-label="Search destinations"></div>
 <div class="filters">
@@ -185,7 +185,7 @@ renderCards();
     <div class="field"><label for="quickStart">Departure date</label><input id="quickStart" type="date" required></div>
     <div class="field"><label for="quickEnd">Return date</label><input id="quickEnd" type="date" required></div>
    </div>
-   <button class="btn" type="submit" style="margin-top:17px">Confirm demo booking ↗</button>
+   <button class="btn" type="submit" style="margin-top:17px">Confirm Booking ↗</button>
    <p style="font-size:10px;color:#aabbb2;margin-top:10px">This creates a sample ticket only. It does not reserve a real trip.</p>
   </form>
  </div>
